@@ -4,15 +4,15 @@ on:
     branches:
       - 'main'
 jobs:
-  check-bats-version:
+  terminus-drush-testing:
     runs-on: ubuntu-latest
     steps:
+      - name: Deploying code
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+        run: |
+          echo "::set-env name=KNOWN_HOSTS::$(cat .github/fixtures/known_hosts)"
+          echo "::set-env name=SSH_CONFIG::$(cat .github/fixtures/ssh_config)"
+
 #  build:
 #    runs-on: ubuntu-latest
 #    steps:
