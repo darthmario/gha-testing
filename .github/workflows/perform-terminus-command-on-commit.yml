@@ -12,18 +12,19 @@ jobs:
   terminus-drush-testing:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - name: Deploying code
+        uses: actions/checkout@v3
         run: |
           echo "Known Hosts is $KNOWN_HOSTS"
           echo "SSH config is $SSH_CONFIG"
-      - uses: shimataro/ssh-key-action@v2
+      - name: Setup SSH Key
+        uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.PANTHEON_SSH_KEY }}
           config: ${{ env.SSH_CONFIG }}
           known_hosts: ${{ env.KNOWN_HOSTS }}
-      - name: Installing Terminus
-        uses: kopepasah/setup-pantheon-terminus@master
+      - name: Install Terminus
+        uses: ackama/setup-terminus@main
         with:
           pantheon-machine-token: ${{ secrets.PANTHEON_MACHINE_TOKEN }}
 
