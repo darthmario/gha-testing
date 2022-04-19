@@ -22,7 +22,10 @@ jobs:
           key: ${{ secrets.PANTHEON_SSH_KEY }}
           config: ${{ env.SSH_CONFIG }}
           known_hosts: ${{ env.KNOWN_HOSTS }}
-
+      - name: Installing Terminus
+        uses: kopepasah/setup-pantheon-terminus@master
+        with:
+          pantheon-machine-token: ${{ secrets.PANTHEON_MACHINE_TOKEN }}
 
 #  build:
 #    runs-on: ubuntu-latest
