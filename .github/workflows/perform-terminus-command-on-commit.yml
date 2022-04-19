@@ -7,8 +7,8 @@ jobs:
   terminus-drush-testing:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploying code
       - uses: actions/checkout@v3
+      - name: Deploying code
         run: |
           echo "::set-env name=KNOWN_HOSTS::$(cat .github/fixtures/known_hosts)"
           echo "::set-env name=SSH_CONFIG::$(cat .github/fixtures/ssh_config)"
