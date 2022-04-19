@@ -1,1 +1,1 @@
-terminus env:cc tylerfaheycom.dev
+terminus drush nated9.dev version
