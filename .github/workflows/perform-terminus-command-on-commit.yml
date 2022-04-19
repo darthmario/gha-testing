@@ -3,7 +3,7 @@ name: Run Terminus Command
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '*/2 * * * *'
+    - cron:  '*/6 * * * *'
 
 env:
   KNOWN_HOSTS: 127.0.0.1
