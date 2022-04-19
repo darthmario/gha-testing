@@ -26,28 +26,10 @@ jobs:
         uses: ackama/setup-terminus@main
         with:
           pantheon-machine-token: ${{ secrets.PANTHEON_MACHINE_TOKEN }}
-
-#  build:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v1
-#      - name: deployer
-#        run: |
-#          echo "::set-env name=KNOWN_HOSTS::$(cat .github/fixtures/known_hosts)"
-#          echo "::set-env name=SSH_CONFIG::$(cat .github/fixtures/ssh_config)"
-#      - uses: shimataro/ssh-key-action@v2
-#        with:
-#          key: ${{ secrets.PANTHEON_SSH_KEY }}
-#          config: ${{ env.SSH_CONFIG }}
-#          known_hosts: ${{ env.KNOWN_HOSTS }}
-#      - name: Installing Terminus
-#        uses: kopepasah/setup-pantheon-terminus@master
-#        with:
-#          pantheon-machine-token: ${{ secrets.PANTHEON_MACHINE_TOKEN }}
-#      - name: Running command
-#        run: |
-#          input="commands.txt"
-#          while IFS= read -r line
-#          do
-#            eval $line
-#          done < "$input"
+      - name: Running command
+        run: |
+          input="commands.txt"
+          while IFS= read -r line
+          do
+            eval $line
+          done < "$input"
