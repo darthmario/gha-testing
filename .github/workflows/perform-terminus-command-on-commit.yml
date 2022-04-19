@@ -2,7 +2,7 @@ name: Run Terminus Command
 
 on:
   schedule:
-    - cron:  '*/6 * * * *'
+    - cron:  '*/5 * * * *'
 
 env:
   KNOWN_HOSTS: 127.0.0.1
