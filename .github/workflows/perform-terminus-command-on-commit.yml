@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - 'main'
+env:
+  KNOWN_HOSTS: 127.0.0.1
+  SSH_CONFIG: Host *.drush.in
+  StrictHostKeyChecking no
 jobs:
   terminus-drush-testing:
     runs-on: ubuntu-latest
@@ -10,8 +14,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Deploying code
         run: |
-          echo "::set-env name=KNOWN_HOSTS::$(cat .github/fixtures/known_hosts)"
-          echo "::set-env name=SSH_CONFIG::$(cat .github/fixtures/ssh_config)"
+          echo "Known Hosts is $KNOWN_HOSTS"
+          echo "SSH config is $SSH_CONFIG"
 
 #  build:
 #    runs-on: ubuntu-latest
