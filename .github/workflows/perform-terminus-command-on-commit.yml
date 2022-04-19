@@ -26,10 +26,5 @@ jobs:
         uses: ackama/setup-terminus@main
         with:
           pantheon-machine-token: ${{ secrets.PANTHEON_MACHINE_TOKEN }}
-      - name: Running command
-        run: |
-          input="commands.txt"
-          while IFS= read -r line
-          do
-            eval $line
-          done < "$input"
+      - name: Running simple drush command
+        runs: terminus drush nated9.dev version
