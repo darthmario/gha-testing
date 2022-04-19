@@ -5,8 +5,9 @@ on:
       - 'main'
 env:
   KNOWN_HOSTS: 127.0.0.1
-  SSH_CONFIG: Host *.drush.in
-  StrictHostKeyChecking no
+  SSH_CONFIG: |
+    Host *.drush.in
+      StrictHostKeyChecking no
 jobs:
   terminus-drush-testing:
     runs-on: ubuntu-latest
