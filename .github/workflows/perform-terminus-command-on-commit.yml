@@ -13,12 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploying code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         run: |
           echo "Known Hosts is $KNOWN_HOSTS"
           echo "SSH config is $SSH_CONFIG"
-      - name: Setup SSH Key
-        uses: shimataro/ssh-key-action@v2
+      - uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.PANTHEON_SSH_KEY }}
           config: ${{ env.SSH_CONFIG }}
