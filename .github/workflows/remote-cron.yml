@@ -64,8 +64,7 @@ jobs:
         with:
           pantheon-machine-token: ${{ secrets.PANTHEON_MACHINE_TOKEN }}
       - name: Set temporary connection credentials
-        run: |
-          CREDS=$(php private/scripts/cron/set_connection.php)
-          echo ${CREDS}
+        run: php private/scripts/cron/set_connection.php
+
       - name: Run Drush command
         run: drush status --full --show-passwords
