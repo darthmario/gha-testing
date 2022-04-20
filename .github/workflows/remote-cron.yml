@@ -66,10 +66,7 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v2.3.4
       - name: Set temporary connection credentials
-        run: |
-          CREDS=$(php scripts/cron/set_connection.php)
-          for CRED in ${CREDS};do
-            echo $CRED >> $GITHUB_ENV
-          done
+        run: php scripts/cron/set_connection.php
+
       - name: Run Drush command
         run: drush status --full --show-passwords
