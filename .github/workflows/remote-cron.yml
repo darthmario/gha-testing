@@ -39,7 +39,11 @@ jobs:
           git init
           git remote add origin $REMOTE
           git fetch
-          git checkout main
+#          Removing this as we're not in live yet
+#          LATEST_TAG=$(git tag | grep pantheon_live_ | sort -k1.15n | tail -1)
+#          git checkout $LATEST_TAG
+#          git pull origin $LATEST_TAG
+          git checkout master
           git pull origin
           rm -rf vendor
       - name: Get Composer Cache Directory
