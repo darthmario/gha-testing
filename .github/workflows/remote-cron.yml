@@ -79,3 +79,4 @@ jobs:
         run: |
           cd pantheon
           drush status --full --show-passwords
+          drush list
