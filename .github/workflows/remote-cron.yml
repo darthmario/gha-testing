@@ -76,7 +76,4 @@ jobs:
             echo $CRED >> $GITHUB_ENV
           done
       - name: Run Drush command
-        run: |
-          drush site-info
-          drush cache-clear
-          drush list
+        run: drush status --full --show-passwords
