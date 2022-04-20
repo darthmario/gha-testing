@@ -66,8 +66,6 @@ jobs:
       - name: Set temporary connection credentials
         run: |
           CREDS=$(php private/scripts/cron/set_connection.php)
-          for CRED in ${CREDS};do
-            echo $CRED >> $GITHUB_ENV
-          done
+          echo ${CREDS}
       - name: Run Drush command
         run: drush status --full --show-passwords
