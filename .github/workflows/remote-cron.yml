@@ -72,4 +72,4 @@ jobs:
             echo $CRED >> $GITHUB_ENV
           done
       - name: Run Drush command
-        run: which drush
+        run: ls $GITHUB_WORKSPACE/vendor/bin
