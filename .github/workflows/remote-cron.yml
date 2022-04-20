@@ -59,9 +59,10 @@ jobs:
       - name: Create bin aliases
         run: |
           echo "$GITHUB_WORKSPACE/vendor/bin" >> $GITHUB_PATH
-      - name: Authenticate Terminus
-        run: |
-          terminus auth:login --machine-token $TERMINUS_MACHINE_TOKEN
+      - name: Install Terminus
+        uses: ackama/setup-terminus@main
+        with:
+          pantheon-machine-token: ${{ secrets.PANTHEON_MACHINE_TOKEN }}
       - name: Set temporary connection credentials
         run: |
           CREDS=$(php private/scripts/cron/set_connection.php)
