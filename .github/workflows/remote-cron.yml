@@ -75,6 +75,5 @@ jobs:
           for CRED in ${CREDS};do
             echo $CRED >> $GITHUB_ENV
           done
-          ls -lah /home/runner/work/gha-testing/gha-testing
       - name: Run Drush command
-        run: ls -lah /home/runner/work/gha-testing/gha-testing
+        run: drush status --full --show-passwords
