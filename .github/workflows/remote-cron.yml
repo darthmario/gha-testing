@@ -42,7 +42,6 @@ jobs:
           git checkout ps-pa-cron
           git pull origin
           rm -rf vendor
-          pwd
       - name: Get Composer Cache Directory
         id: composer-cache
         run: |
@@ -73,4 +72,4 @@ jobs:
             echo $CRED >> $GITHUB_ENV
           done
       - name: Run Drush command
-        run: ls $GITHUB_WORKSPACE/vendor/bin
+        run: ls -lah /home/runner/work/gha-testing/gha-testing
