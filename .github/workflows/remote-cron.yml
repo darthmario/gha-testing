@@ -41,17 +41,6 @@ jobs:
           ssh-key: ${{ secrets.PANTHEON_SSH_KEY }}
           path: pantheon
           ref: ps-pa-cron
-#      - name: Clone Pantheon site repo, set to live tag
-#        id: clone-pantheon-site
-#        run: |
-#          REMOTE=$(echo "ssh://codeserver.dev.${SITE_ID}@codeserver.dev.${SITE_ID}.drush.in:2222/~/repository.git")
-#          git init
-#          git remote add origin $REMOTE
-#          git fetch
-#          git checkout ps-pa-cron
-#          git pull origin
-#          rm -rf vendor
-#          ls -lah /home/runner/work/gha-testing/gha-testing
       - name: Get Composer Cache Directory
         id: composer-cache
         run: |
