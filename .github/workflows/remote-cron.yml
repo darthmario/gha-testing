@@ -63,8 +63,10 @@ jobs:
         uses: ackama/setup-terminus@main
         with:
           pantheon-machine-token: ${{ secrets.PANTHEON_MACHINE_TOKEN }}
+      - name: checkout repo
+        uses: actions/checkout@v2.3.4
       - name: Set temporary connection credentials
-        run: php scripts/cron/set_connection.php
+        run: ls
 
       - name: Run Drush command
         run: drush status --full --show-passwords
