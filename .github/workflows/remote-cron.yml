@@ -32,6 +32,8 @@ jobs:
           CODE_SERVER=$(echo "codeserver.dev.${SITE_ID}.drush.in")
           ssh-keyscan -t rsa -p 2222 $APP_SERVER >> ~/.ssh/known_hosts
           ssh-keyscan -t rsa -p 2222 $CODE_SERVER >> ~/.ssh/known_hosts
+      - name: checkout repo
+        uses: actions/checkout@v2.3.4
       - name: Clone Pantheon site repo, set to live tag
         id: clone-pantheon-site
         run: |
@@ -67,8 +69,6 @@ jobs:
         uses: ackama/setup-terminus@main
         with:
           pantheon-machine-token: ${{ secrets.PANTHEON_MACHINE_TOKEN }}
-      - name: checkout repo
-        uses: actions/checkout@v2.3.4
       - name: Set temporary connection credentials
         run: |
           CREDS=$(php scripts/set_connection.php)
