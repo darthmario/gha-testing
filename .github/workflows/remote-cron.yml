@@ -73,7 +73,7 @@ jobs:
         run: |
           CREDS=$(php scripts/set_connection.php)
           for CRED in ${CREDS};do
-            echo $CRED
+            echo ${CRED}
             echo $CRED >> $GITHUB_ENV
           done
       - name: Run Drush command
