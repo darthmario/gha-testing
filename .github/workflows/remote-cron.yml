@@ -42,10 +42,12 @@ jobs:
           git checkout ps-pa-cron
           git pull origin
           rm -rf vendor
+          ls -lah /home/runner/work/gha-testing/gha-testing
       - name: Get Composer Cache Directory
         id: composer-cache
         run: |
           echo "::set-output name=dir::$(composer config cache-files-dir)"
+          ls -lah /home/runner/work/gha-testing/gha-testing
       - name: Cache Composer Downloads
         uses: actions/cache@v1
         with:
@@ -56,9 +58,11 @@ jobs:
       - name: Install composer dependencies
         run: |
           composer --no-interaction --no-progress install
+          ls -lah /home/runner/work/gha-testing/gha-testing
       - name: Create bin aliases
         run: |
           echo "$GITHUB_WORKSPACE/vendor/bin" >> $GITHUB_PATH
+          ls -lah /home/runner/work/gha-testing/gha-testing
       - name: Install Terminus
         uses: ackama/setup-terminus@main
         with:
@@ -71,5 +75,6 @@ jobs:
           for CRED in ${CREDS};do
             echo $CRED >> $GITHUB_ENV
           done
+          ls -lah /home/runner/work/gha-testing/gha-testing
       - name: Run Drush command
         run: ls -lah /home/runner/work/gha-testing/gha-testing
