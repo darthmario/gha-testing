@@ -34,13 +34,19 @@ jobs:
           ssh-keyscan -t rsa -p 2222 $CODE_SERVER >> ~/.ssh/known_hosts
       - name: checkout github repo
         uses: actions/checkout@v2.3.4
-      - name: Clone Pantheon  repository
-        uses: actions/checkout@v2
-        with:
-          repository: ssh://codeserver.dev.${{ secrets.PANTHEON_SITE_ID }}@codeserver.dev.${{ secrets.PANTHEON_SITE_ID }}.drush.in:2222/~/repository.git
-          ssh-key: ${{ secrets.PANTHEON_SSH_KEY }}
-          path: pantheon
-          ref: ps-pa-cron
+      - name: Clone Pantheon site repo, set to live tag
+        id: clone-pantheon-site
+        run: |
+          REMOTE=$(echo "ssh://codeserver.dev.${SITE_ID}@codeserver.dev.${SITE_ID}.drush.in:2222/~/repository.git")
+          mkdir pantheon
+          cd pantheon
+          git init
+          git remote add origin $REMOTE
+          git fetch
+          git checkout ps-pa-cron
+          git pull origin
+          rm -rf vendor
+          ls -lah /home/runner/work/gha-testing/gha-testing
       - name: Get Composer Cache Directory
         id: composer-cache
         run: |
