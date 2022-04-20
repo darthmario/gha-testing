@@ -78,4 +78,4 @@ jobs:
       - name: Run Drush command
         run: |
           cd pantheon
-          drush status --full --show-passwords
+          drush status --full

@@ -34,4 +34,4 @@ jobs:
         with:
           pantheon-machine-token: ${{ secrets.PANTHEON_MACHINE_TOKEN }}
       - name: Running simple drush command
-        run: terminus drush nated9.dev version
+        run: terminus drush yourtango-existing-site.ps-pa-cron -- status --full
