@@ -42,6 +42,7 @@ jobs:
           git checkout ps-pa-cron
           git pull origin
           rm -rf vendor
+          ls -lah
       - name: Get Composer Cache Directory
         id: composer-cache
         run: |
