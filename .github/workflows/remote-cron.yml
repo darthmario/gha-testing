@@ -32,15 +32,12 @@ jobs:
           CODE_SERVER=$(echo "codeserver.dev.${SITE_ID}.drush.in")
           ssh-keyscan -t rsa -p 2222 $APP_SERVER >> ~/.ssh/known_hosts
           ssh-keyscan -t rsa -p 2222 $CODE_SERVER >> ~/.ssh/known_hosts
-      - name: checkout repo
+      - name: checkout github repo
         uses: actions/checkout@v2.3.4
       - name: Clone Pantheon site repo, set to live tag
         id: clone-pantheon-site
         run: |
           REMOTE=$(echo "ssh://codeserver.dev.${SITE_ID}@codeserver.dev.${SITE_ID}.drush.in:2222/~/repository.git")
-          mkdir sourcerepo
-          cd sourcerepo
-          git init
           git remote add origin $REMOTE
           git fetch
           git checkout ps-pa-cron
