@@ -39,7 +39,7 @@ jobs:
           git init
           git remote add origin $REMOTE
           git fetch
-          git checkout master
+          git checkout ps-pa-cron
           git pull origin
           rm -rf vendor
       - name: Get Composer Cache Directory
