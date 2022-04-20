@@ -46,12 +46,11 @@ jobs:
           git checkout ps-pa-cron
           git pull origin
           rm -rf vendor
-          ls -lah /home/runner/work/gha-testing/gha-testing
       - name: Get Composer Cache Directory
         id: composer-cache
         run: |
+          cd pantheon
           echo "::set-output name=dir::$(composer config cache-files-dir)"
-          ls -lah /home/runner/work/gha-testing/gha-testing
       - name: Cache Composer Downloads
         uses: actions/cache@v1
         with:
@@ -61,12 +60,11 @@ jobs:
             ${{ runner.os }}-composer-
       - name: Install composer dependencies
         run: |
+          cd pantheon
           composer --no-interaction --no-progress install
-          ls -lah /home/runner/work/gha-testing/gha-testing
       - name: Create bin aliases
         run: |
-          echo "$GITHUB_WORKSPACE/vendor/bin" >> $GITHUB_PATH
-          ls -lah /home/runner/work/gha-testing/gha-testing
+          echo "$GITHUB_WORKSPACE/pantheon/vendor/bin" >> $GITHUB_PATH
       - name: Install Terminus
         uses: ackama/setup-terminus@main
         with:
