@@ -38,6 +38,8 @@ jobs:
         id: clone-pantheon-site
         run: |
           REMOTE=$(echo "ssh://codeserver.dev.${SITE_ID}@codeserver.dev.${SITE_ID}.drush.in:2222/~/repository.git")
+          mkdir sourcerepo
+          cd sourcerepo
           git init
           git remote add origin $REMOTE
           git fetch
