@@ -15,13 +15,13 @@ if ((php_sapi_name() == "cli")) {
     $CRON_DB_PORT = $mysql_parts[7];
     $CRON_DB_NAME = $mysql_parts[8];
 
-    $output = <<<EOD
-  CRON_DB_USER=${CRON_DB_USER}
-  CRON_DB_PASS=${CRON_DB_PASS}
-  CRON_DB_HOST=${CRON_DB_HOST}
-  CRON_DB_PORT=${CRON_DB_PORT}
-  CRON_DB_NAME=${CRON_DB_NAME}
-  EOD;
+$output =<<<EOD
+CRON_DB_USER=${CRON_DB_USER}
+CRON_DB_PASS=${CRON_DB_PASS}
+CRON_DB_HOST=${CRON_DB_HOST}
+CRON_DB_PORT=${CRON_DB_PORT}
+CRON_DB_NAME=${CRON_DB_NAME}
+EOD;
 
     print $output;
 }

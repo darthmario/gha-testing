@@ -63,10 +63,11 @@ jobs:
         uses: ackama/setup-terminus@main
         with:
           pantheon-machine-token: ${{ secrets.PANTHEON_MACHINE_TOKEN }}
-
       - name: Set temporary connection credentials
         run: |
           CREDS=$(php private/scripts/cron/set_connection.php)
-
+          for CRED in ${CREDS};do
+            echo $CRED >> $GITHUB_ENV
+          done
       - name: Run Drush command
         run: drush status --full --show-passwords
